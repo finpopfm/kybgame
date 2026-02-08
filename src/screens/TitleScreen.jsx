@@ -16,7 +16,7 @@ export default function TitleScreen({ onStart }) {
       <h1 className="title-screen__logo">PASS THE KYB</h1>
       <h2 className="title-screen__subtitle">Compliance Edition</h2>
       <p className="title-screen__tagline">
-        Review merchant applications. Spot the fraudsters. Protect the startup.
+      You are about to review KYB cases under time pressure. Spot the fraudsters. Protect the startup.
         Can you survive 5 days as a fintech compliance officer?
       </p>
 
