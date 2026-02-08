@@ -1,8 +1,15 @@
+import { useCallback } from 'react';
 import { CHARACTERS } from '../data/dialogues';
+import { initAudio } from '../utils/sounds';
 
 const characterOrder = ['luna', 'iris', 'nova', 'vera'];
 
 export default function TitleScreen({ onStart }) {
+  const handleStart = useCallback(() => {
+    initAudio(); // Unlock audio on mobile (must be inside user gesture)
+    onStart();
+  }, [onStart]);
+
   return (
     <div className="title-screen">
       <div className="title-screen__brand">FINPOP GAMES</div>
@@ -32,7 +39,7 @@ export default function TitleScreen({ onStart }) {
         })}
       </div>
 
-      <button className="title-screen__start-btn" onClick={onStart}>
+      <button className="title-screen__start-btn" onClick={handleStart}>
         Start Review
       </button>
 

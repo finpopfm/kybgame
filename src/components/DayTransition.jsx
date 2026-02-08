@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { initAudio } from '../utils/sounds';
 
 export default function DayTransition({ dayConfig, onContinue }) {
   const [ready, setReady] = useState(false);
+
+  const handleBegin = useCallback(() => {
+    initAudio();
+    onContinue();
+  }, [onContinue]);
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 1500);
@@ -38,7 +44,7 @@ export default function DayTransition({ dayConfig, onContinue }) {
       {ready && (
         <button
           className="title-screen__start-btn"
-          onClick={onContinue}
+          onClick={handleBegin}
           style={{ marginTop: '32px', fontSize: '16px' }}
         >
           Begin
