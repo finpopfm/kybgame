@@ -3,15 +3,14 @@
 
 export async function shareScore({ grade, funTitle, score }) {
   const text = [
-    `🎮 FINPOP: Pass the KYB`,
+    `🎮 KYB simulation result:`,
     ``,
     `Grade: ${grade} — "${funTitle}"`,
     `📊 Accuracy: ${score.accuracy}%`,
     `🕵️ Fraudsters caught: ${score.fraudstersCaught}/${score.totalFraudsters}`,
     `⚡ Speed: ${score.speedRating}`,
     ``,
-    `Can you beat my score?`,
-    `🎵 finpop.fm`,
+    `Try it yourself → https://kyb.finpop.fm`,
   ].join('\n');
 
   if (navigator.share) {

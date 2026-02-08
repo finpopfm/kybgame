@@ -858,8 +858,27 @@ body {
   transform: none;
 }
 
-.score-card__finpop-link {
+.score-card__disclaimer {
   margin-top: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+
+.score-card__retry-note {
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--neon-red);
+  opacity: 0.5;
+  letter-spacing: 0.3px;
+}
+
+.score-card__finpop-link {
+  margin-top: var(--space-md);
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
