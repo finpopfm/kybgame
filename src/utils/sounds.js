@@ -2,7 +2,6 @@
 // All sounds generated with Web Audio API — no external files needed
 
 let audioCtx = null;
-let unlocked = false;
 
 function getContext() {
   if (!audioCtx) {
@@ -14,18 +13,15 @@ function getContext() {
   return audioCtx;
 }
 
-// Must be called from a user gesture (tap/click) to unlock audio on mobile
+// Called on first user tap to unlock audio on mobile
 export function initAudio() {
-  if (unlocked) return;
   try {
     const ctx = getContext();
-    // Play a silent buffer to unlock the audio pipeline
     const buffer = ctx.createBuffer(1, 1, ctx.sampleRate);
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.connect(ctx.destination);
     source.start(0);
-    unlocked = true;
   } catch {
     // Audio not available
   }
