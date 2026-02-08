@@ -16,21 +16,24 @@ export default function GameScreen({ game }) {
   const timerSeconds = dayConfig?.timerSeconds || null;
   const timer = useTimer(timerSeconds || 999, actions.timerExpired);
   const chatInitialized = useRef(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const autoCloseTimer = useRef(null);
+  const [chatOpen, setChatOpen] = useState(true); // start open to show intro
+  const [chatAutoClose, setChatAutoClose] = useState(true);
   const prevMsgCount = useRef(0);
 
+  // Auto-close chat after 6 seconds (separate effect, unaffected by StrictMode)
+  useEffect(() => {
+    if (!chatAutoClose) return;
+    const id = setTimeout(() => {
+      setChatOpen(false);
+      setChatAutoClose(false);
+    }, 6000);
+    return () => clearTimeout(id);
+  }, [chatAutoClose]);
+
   // Start timer and send day-start dialogues
-  // On Day 1, auto-open chat for a few seconds so user sees the tutorial messages
   useEffect(() => {
     if (!chatInitialized.current) {
       chatInitialized.current = true;
-
-      // Auto-open chat on mobile to show intro messages
-      setChatOpen(true);
-      autoCloseTimer.current = setTimeout(() => {
-        setChatOpen(false);
-      }, 6000);
 
       const msgs = getDayStartDialogues(currentDay);
       msgs.forEach((msg, i) => {
@@ -42,9 +45,6 @@ export default function GameScreen({ game }) {
         timer.start();
       }
     }
-    return () => {
-      if (autoCloseTimer.current) clearTimeout(autoCloseTimer.current);
-    };
   }, [currentDay, actions, timerSeconds, timer]);
 
   // Send reaction messages on decisions
