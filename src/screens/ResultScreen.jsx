@@ -69,15 +69,14 @@ export default function ResultScreen({ score, grade, funTitle, allDecisions, onP
 
   const handleShare = useCallback(async () => {
     const text = [
-      `FINPOP: Pass the KYB`,
+      `KYB simulation result:`,
       ``,
       `Grade: ${grade} — "${funTitle}"`,
       `Accuracy: ${score.accuracy}%`,
       `Fraudsters caught: ${score.fraudstersCaught}/${score.totalFraudsters}`,
       `Speed: ${score.speedRating}`,
       ``,
-      `Can you beat my score?`,
-      `Play at finpop.fm`,
+      `Try it yourself → https://kyb.finpop.fm`,
     ].join('\n');
 
     // Pick a grade-aware confirmation line (with neutral fallback mix)
