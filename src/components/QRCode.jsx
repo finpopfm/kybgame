@@ -1,28 +1,39 @@
-// QR Code component — uses Google Charts API to generate a real scannable QR code
-// Purple on dark background to match FINPOP aesthetic
+import { useEffect, useRef } from 'react';
+import QRCodeLib from 'qrcode';
 
-const VERIFY_URL = 'https://kyb.finpop.fm/verify';
+export default function QRCode({ url, size = 68 }) {
+  const canvasRef = useRef(null);
 
-export default function QRCode({ size = 68 }) {
-  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(VERIFY_URL)}&color=a855f7&bgcolor=0a0a1a&margin=1&format=svg`;
+  useEffect(() => {
+    if (!canvasRef.current || !url) return;
+    QRCodeLib.toCanvas(canvasRef.current, url, {
+      width: size * 2, // 2x for retina
+      margin: 1,
+      color: {
+        dark: '#a855f7',
+        light: '#0a0a1a',
+      },
+      errorCorrectionLevel: 'L',
+    }).catch(() => {});
+  }, [url, size]);
 
   return (
     <a
-      href={VERIFY_URL}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="qr-code"
       style={{ textDecoration: 'none' }}
     >
-      <img
-        src={qrSrc}
-        alt="Verify audit"
-        width={size}
-        height={size}
+      <canvas
+        ref={canvasRef}
         style={{
+          width: size,
+          height: size,
           borderRadius: '4px',
           border: '1px solid rgba(168, 85, 247, 0.3)',
           display: 'block',
+          imageRendering: 'pixelated',
         }}
       />
       <span className="qr-code__label">VERIFY THIS AUDIT</span>

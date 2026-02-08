@@ -1,8 +1,9 @@
-import { useRef, useCallback, useEffect, useState } from 'react';
+import { useRef, useCallback, useEffect, useState, useMemo } from 'react';
 import { getGradeClass } from '../utils/scoring';
 import Confetti from '../components/Confetti';
 import QRCode from '../components/QRCode';
 import { playResultReveal } from '../utils/sounds';
+import { buildVerifyUrl } from '../utils/verifyUrl';
 
 // --- Grade-based copy confirmation lines ---
 const COPY_LINES = {
@@ -58,6 +59,10 @@ export default function ResultScreen({ score, grade, funTitle, allDecisions, onP
   const playCount = useRef(0);
 
   const tier = getGradeTier(grade);
+  const verifyUrl = useMemo(
+    () => score ? buildVerifyUrl(score, grade, funTitle) : '',
+    [score, grade, funTitle]
+  );
 
   useEffect(() => {
     playResultReveal();
@@ -203,12 +208,12 @@ export default function ResultScreen({ score, grade, funTitle, allDecisions, onP
         )}
 
         <div className="score-card__qr">
-          <QRCode size={68} />
+          <QRCode url={verifyUrl} size={68} />
         </div>
 
         <div className="score-card__footer">
           <div className="score-card__finpop-link">
-            A game by <a href="https://finpop.fm" target="_blank" rel="noopener noreferrer">FINPOP.fm</a> — Payments, Risk & Control
+            <a href="https://finpop.fm" target="_blank" rel="noopener noreferrer">FINPOP.fm</a> — Payments, Risk & Control
           </div>
           <div className="score-card__soundtrack">
             <a href="https://music.youtube.com/watch?v=wAaE0vr0pMA&si=tHOgkPNPdOl7shDb" target="_blank" rel="noopener noreferrer">
