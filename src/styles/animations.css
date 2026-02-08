@@ -1,0 +1,124 @@
+/* ========== STAMP ANIMATIONS ========== */
+@keyframes stampSlam {
+  0% { transform: scale(3) rotate(-15deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  70% { transform: scale(0.95) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes stampInkSpread {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+/* ========== DOCUMENT ANIMATIONS ========== */
+@keyframes slideInFromRight {
+  0% { transform: translateX(120%) rotate(2deg); opacity: 0; }
+  60% { transform: translateX(-3%) rotate(-0.5deg); opacity: 1; }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+@keyframes slideOutToLeft {
+  0% { transform: translateX(0) rotate(0); opacity: 1; }
+  100% { transform: translateX(-120%) rotate(-5deg); opacity: 0; }
+}
+
+@keyframes fadeSlideUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ========== GLOW / PULSE ========== */
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3), 0 0 20px rgba(168, 85, 247, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.2); }
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(236, 72, 153, 0.3); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(168, 85, 247, 0.3); }
+  50% { border-color: rgba(168, 85, 247, 0.6); }
+}
+
+/* ========== DAY TRANSITION ========== */
+@keyframes dayTransitionIn {
+  0% { transform: scale(0.8); opacity: 0; filter: blur(10px); }
+  100% { transform: scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes dayTransitionOut {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; filter: blur(10px); }
+}
+
+/* ========== SCORE REVEAL ========== */
+@keyframes scoreReveal {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes countUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== UI ELEMENTS ========== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ========== CHAT MESSAGES ========== */
+@keyframes chatMessageIn {
+  0% { transform: translateY(20px) scale(0.9); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ========== SHAKE (for wrong answers) ========== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* ========== TIMER WARNING ========== */
+@keyframes timerWarning {
+  0%, 100% { color: var(--neon-red); }
+  50% { color: var(--neon-orange); }
+}
