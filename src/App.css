@@ -877,8 +877,36 @@ body {
   letter-spacing: 0.3px;
 }
 
-.score-card__finpop-link {
+.score-card__qr {
+  margin-top: var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.qr-code__label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.score-card__footer {
   margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.score-card__finpop-link {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
@@ -891,6 +919,27 @@ body {
 
 .score-card__finpop-link a:hover {
   text-decoration: underline;
+}
+
+.score-card__soundtrack {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.score-card__soundtrack a {
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.score-card__soundtrack a::before {
+  content: '\1F3A7  ';
+}
+
+.score-card__soundtrack a:hover {
+  opacity: 1;
+  color: var(--neon-pink);
 }
 
 /* ========== CONFETTI ========== */

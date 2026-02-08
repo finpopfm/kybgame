@@ -1,6 +1,7 @@
 import { useRef, useCallback, useEffect, useState } from 'react';
 import { getGradeClass } from '../utils/scoring';
 import Confetti from '../components/Confetti';
+import QRCode from '../components/QRCode';
 import { playResultReveal } from '../utils/sounds';
 
 // --- Grade-based copy confirmation lines ---
@@ -201,8 +202,19 @@ export default function ResultScreen({ score, grade, funTitle, allDecisions, onP
           </div>
         )}
 
-        <div className="score-card__finpop-link">
-          A game by <a href="https://finpop.fm" target="_blank" rel="noopener noreferrer">FINPOP.fm</a> — Payments, Risk & Control
+        <div className="score-card__qr">
+          <QRCode size={68} />
+        </div>
+
+        <div className="score-card__footer">
+          <div className="score-card__finpop-link">
+            A game by <a href="https://finpop.fm" target="_blank" rel="noopener noreferrer">FINPOP.fm</a> — Payments, Risk & Control
+          </div>
+          <div className="score-card__soundtrack">
+            <a href="https://music.youtube.com/watch?v=wAaE0vr0pMA&si=tHOgkPNPdOl7shDb" target="_blank" rel="noopener noreferrer">
+              Soundtrack available
+            </a>
+          </div>
         </div>
       </div>
     </div>
