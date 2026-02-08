@@ -207,7 +207,22 @@ export default function ResultScreen({ score, grade, funTitle, allDecisions, onP
           </div>
         )}
 
-        <div className="score-card__qr">
+        <div className="score-card__audit-row">
+          <div className="audit-note">
+            <div className="audit-note__line">
+              <span className="audit-note__label">Audit ID:</span>
+              <span className="audit-note__value">KYB-{new Date().toISOString().slice(0, 10)}-{grade}</span>
+            </div>
+            <div className="audit-note__line">
+              <span className="audit-note__label">Status:</span>
+              <span className="audit-note__value">Reproduced</span>
+            </div>
+            <div className="audit-note__line">
+              <span className="audit-note__label">Environment:</span>
+              <span className="audit-note__value">Simulation</span>
+            </div>
+
+          </div>
           <QRCode url={verifyUrl} size={68} />
         </div>
 
