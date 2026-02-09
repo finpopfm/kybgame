@@ -41,7 +41,7 @@ export default function DaySummary({ day, decisions, onNextDay }) {
         </div>
       </div>
 
-      {wrongApprovals > 0 && (
+      {wrongApprovals > 0 && (<>
         <p style={{
           marginTop: '16px',
           fontFamily: 'var(--font-mono)',
@@ -51,7 +51,16 @@ export default function DaySummary({ day, decisions, onNextDay }) {
         }}>
           Warning: {wrongApprovals} fraudulent merchant{wrongApprovals > 1 ? 's' : ''} approved. This will affect your audit score.
         </p>
-      )}
+        <p style={{
+          marginTop: '6px',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '10px',
+          color: 'var(--text-muted)',
+          opacity: 0.5,
+        }}>
+          This report will be included in the final audit.
+        </p>
+      </>)}
 
       <button
         className="title-screen__start-btn"
